@@ -8,7 +8,7 @@ st.set_page_config(page_title="CAGR Tools by OP", page_icon="📈", layout="cent
 st.markdown("""
     <style>
         .title-box {
-            background-color: #d0d0d0;
+            background-color: white;
             padding: 5px;
             border-radius: 10px;
             text-align: center;
@@ -55,9 +55,18 @@ tab1, tab2 = st.tabs(["📈 CAGR Calculator", "🔁 Reverse CAGR Calculator"])
 
 # ---------- 📈 CAGR Calculator ----------
 with tab1:
-    initial_value = st.text_input("Initial Value (₹)", value="10000", key="initial")
-    final_value = st.text_input("Final Value (₹)", value="20000", key="final")
-    years = st.text_input("Duration (Yrs)", value="5", key="years")
+    initial_value = st.text_input(
+        "Initial Value (₹)", value="10000", key="initial",
+        help="The starting investment amount."
+    )
+    final_value = st.text_input(
+        "Final Value (₹)", value="20000", key="final",
+        help="The value of your investment at the end of the period."
+    )
+    years = st.text_input(
+        "Duration (Yrs)", value="5", key="years",
+        help="Number of years the investment was held."
+    )
 
     try:
         p = float(initial_value.replace(",", ""))
@@ -92,9 +101,18 @@ with tab1:
 
 # ---------- 🔁 REVERSE CAGR ----------
 with tab2:
-    initial_value_r = st.text_input("Initial Value (₹)", value="10000", key="rev_initial")
-    cagr_percent_r = st.text_input("CAGR (%)", value="12", key="rev_cagr")
-    years_r = st.text_input("Duration (Yrs)", value="5", key="rev_years")
+    initial_value_r = st.text_input(
+        "Initial Value (₹)", value="10000", key="rev_initial",
+        help="The current investment amount."
+    )
+    cagr_percent_r = st.text_input(
+        "CAGR (%)", value="12", key="rev_cagr",
+        help="Predicted CAGR over the investment period."
+    )
+    years_r = st.text_input(
+        "Duration (Yrs)", value="5", key="rev_years",
+        help="Number of years you plan to invest or invested for."
+    )
 
     try:
         p_r = float(initial_value_r.replace(",", ""))
